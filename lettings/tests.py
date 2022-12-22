@@ -38,7 +38,7 @@ import pytest
 from django.urls import reverse
 from django.test import Client
 
-from .models import Letting
+from .models import Letting, Address
 
 client = Client()
 
@@ -50,13 +50,24 @@ def test_lettings_index(client):
 #
 @pytest.mark.django_db
 def test_letting(client):
-#     letting = Letting.objects.filter(
-#         title='Joshua Tree Green Haus /w Hot Tub',
-#         address='7217 Bedford Street',
-#     )
-    response = client.get(reverse('letting', kwargs={'letting_id': 2}))
+
+    Address.objects.create(number=321,
+        street=' B street',
+        city="Z city",
+        state=" C state",
+        zip_code=88000,
+        country_iso_code="FR-fr")
+
+    address = Address.objects.all()[0]
+
+    letting = Letting.objects.create(
+        title='The test title',
+        address= address,
+    )
+    print(letting)
+    response = client.get(reverse('letting', kwargs={'letting_id': 1}))
 #         response = self.client.get(reverse('letting', kwargs={'letting_id': self.client}))
 
     assert response.status_code == 200
-#     assert response.context['title'] == letting.title
-#     assert response.context['address'] == letting.address
+    assert response.context['title'] == letting.title
+    assert response.context['address'] == letting.address
