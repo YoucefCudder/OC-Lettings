@@ -77,4 +77,3 @@ def test_profile(request):
     assert response.context['profile'].user.username == 'test_user'
 
 
-######## nique sa mère
