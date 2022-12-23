@@ -24,7 +24,7 @@ jobs:
             flake8 .
   build_image:
       docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.9
         auth:
             username: $DOCKER_HUB_USERNAME
             password: $DOCKER_HUB_PASSWORD
