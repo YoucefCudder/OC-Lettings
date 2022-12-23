@@ -34,11 +34,10 @@ jobs:
             command: |
               docker build -t  image_for_lettings_oc .
               docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD    --password-stdin
-              docker tag $DOCKER_LOGIN/$DOCKER_REPO:???? # docker_repo var
+              docker tag 1youcef/oc-lettings:$CIRCLE_SHA1
+              docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
-#        - run:
-#            name: docker push
-#            command: docker push
+#
 #deploy_heroku:
 #  docker:
 #    - image: circleci/python:3.9
