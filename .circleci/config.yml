@@ -36,7 +36,7 @@ jobs:
         - run:
             # docker login
             name: docker login
-            command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD  --password-stdin
+            command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD   # --password-stdin
 
         - run:
             name: docker tag
@@ -48,7 +48,7 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  test_and_build_image:
     jobs:
       - test
       - build_image
