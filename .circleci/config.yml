@@ -22,15 +22,14 @@ jobs:
           name: Lint the code
           command: |
             flake8 .
-
-build_image:
-  docker:
-    - image: circleci/python:3.9
-  steps:
-    - checkout
-    setup_remote_docker:
-      # discord
-      docker_layer_caching: true
+  build_image:
+      docker:
+      - image: circleci/python:3.9
+      steps:
+        - checkout
+       # setup_remote_docker:
+            # discord
+          #docker_layer_caching: true
         - run:
             name: Build docker image
             command: docker build -t  image_for_lettings_oc . # commande à finir
@@ -62,4 +61,3 @@ workflows:
     jobs:
       - test
       - build_image
-      - deploy_heroku
