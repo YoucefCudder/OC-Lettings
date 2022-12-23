@@ -31,6 +31,9 @@ jobs:
 
         - run:
             name: Build docker image
+            auth:
+              username: $DOCKER_USERNAME
+              password: $DOCKER_PASSWORD
             command: |
               docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
               docker build -t  image_for_lettings_oc .
