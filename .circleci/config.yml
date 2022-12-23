@@ -28,7 +28,7 @@ jobs:
 
 
   #jobs duplicate ????
-build image:
+build:
     docker:
     - image: circleci/python:3.9
     steps:
@@ -53,3 +53,4 @@ workflows:
   build_and_test:
     jobs:
       - test
+      - build
