@@ -42,7 +42,6 @@ jobs:
             name: docker tag
             command: docker tag
 
-
 deploy_heroku:
   docker:
     - image: circleci/python:3.9
