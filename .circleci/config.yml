@@ -22,29 +22,39 @@ jobs:
           name: Lint the code
           command: |
             flake8 .
-  build_image:
-      docker:
-      - image: circleci/python:3.9
-      steps:
-        - checkout
-        setup_remote_docker:
-            # discord
-          docker_layer_caching: true
+
+build_image:
+  docker:
+    - image: circleci/python:3.9
+  steps:
+    - checkout
+    setup_remote_docker:
+      # discord
+      docker_layer_caching: true
         - run:
             name: Build docker image
             command: docker build -t  image_for_lettings_oc . # commande à finir
         - run:
             # docker login
             name: docker login
-            command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD   # --password-stdin
+            command: docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD   # --password-stdin
 
         - run:
             name: docker tag
             command: docker tag
+
+
+deploy_heroku:
+  docker:
+    - image: circleci/python:3.9
+
+
   # docker image
   #docker login
   #docker tag
   # docker push
+
+  #deploy heroku
 
 workflows:
   version: 2
@@ -52,3 +62,4 @@ workflows:
     jobs:
       - test
       - build_image
+      - deploy_heroku
