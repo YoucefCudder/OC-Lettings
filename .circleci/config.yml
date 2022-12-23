@@ -3,7 +3,7 @@ version: 2.1
 
 # orbs /// workflows:
 
-jobs:
+job 1  :
   test:
     docker:
       - image: circleci/python:3.9
@@ -28,25 +28,26 @@ jobs:
 
 
   #jobs duplicate ????
-build:
-    docker:
-    - image: circleci/python:3.9
-    steps:
-      - checkout
-      - setup_remote_docker # :
-          # discord
-#        docker_layer_caching: true
-      - run:
-          name: Build docker image
-          command: docker build -t  image_for_lettings_oc # commande à finir
-      - run:
-          # docker login
-          name: docker login
-          command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
-# docker image
-#docker login
-#docker tag
-# docker push
+job 2:
+  build:
+      docker:
+      - image: circleci/python:3.9
+      steps:
+        - checkout
+        - setup_remote_docker # :
+            # discord
+  #        docker_layer_caching: true
+        - run:
+            name: Build docker image
+            command: docker build -t  image_for_lettings_oc # commande à finir
+        - run:
+            # docker login
+            name: docker login
+            command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
+  # docker image
+  #docker login
+  #docker tag
+  # docker push
 
 workflows:
   version: 2
