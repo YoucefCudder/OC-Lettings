@@ -36,7 +36,7 @@ jobs:
         - run:
             # docker login
             name: docker login
-            command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
+            command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD  --password-stdin
 
         - run:
             name: docker tag
