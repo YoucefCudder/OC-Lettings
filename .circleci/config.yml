@@ -3,7 +3,7 @@ version: 2.1
 
 # orbs /// workflows:
 
-job 1  :
+jobs:
   test:
     docker:
       - image: circleci/python:3.9
@@ -22,14 +22,7 @@ job 1  :
           name: Lint the code
           command: |
             flake8 .
-
-
-
-
-
-  #jobs duplicate ????
-job 2:
-  build:
+  build_image:
       docker:
       - image: circleci/python:3.9
       steps:
@@ -44,6 +37,10 @@ job 2:
             # docker login
             name: docker login
             command : docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD
+
+        - run:
+            name: docker tag
+            command: docker tag
   # docker image
   #docker login
   #docker tag
@@ -54,4 +51,4 @@ workflows:
   build_and_test:
     jobs:
       - test
-      - build
+      - build_image
