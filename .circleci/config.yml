@@ -24,7 +24,7 @@ jobs:
             flake8 .
   build_image:
       docker:
-      - image: circleci/python:3.9
+      - image: circleci/python:3.8
       steps:
         - checkout
         - setup_remote_docker
