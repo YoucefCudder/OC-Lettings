@@ -36,12 +36,15 @@ jobs:
         - run:
             # docker login
             name: docker login
-            command: docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD   # --password-stdin
+            command: docker login --username $DOCKERHUB_LOGIN --password $DOCKERHUB_PASSWORD    --password-stdin
 
         - run:
             name: docker tag
-            command: docker tag
+            command: docker tag $DOCKER_LOGIN/$DOCKER_REPO:????
 
+#        - run:
+#            name: docker push
+#            command: docker push
 deploy_heroku:
   docker:
     - image: circleci/python:3.9
