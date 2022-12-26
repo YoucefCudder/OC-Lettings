@@ -26,8 +26,8 @@ jobs:
       docker:
       - image: circleci/python:3.8
         auth:
-            username: $DOCKER_HUB_USERNAME
-            password: $DOCKER_HUB_PASSWORD
+            username: $DOCKER_USERNAME
+            password: $DOCKER_PASSWORD
       steps:
         - checkout
         - setup_remote_docker
@@ -36,7 +36,7 @@ jobs:
             name: Build docker image
 
             command: |
-              echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
+              echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME
               docker build -t  image_for_lettings_oc .
               docker tag 1youcef/oc-lettings:$CIRCLE_SHA1
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
