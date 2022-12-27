@@ -36,7 +36,7 @@ jobs:
             name: Build docker image
 
             command: |
-              echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME
+              echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
               docker build -t  image_for_lettings_oc .
               docker tag 1youcef/oc-lettings:$CIRCLE_SHA1
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
