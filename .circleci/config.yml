@@ -40,7 +40,7 @@ jobs:
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 
               docker tag $CIRCLE_SHA1 1youcef/oc-lettings:$CIRCLE_SHA1
-              docker push 1youcef/oc-lettings:latest
+              docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
 #
 #deploy_heroku:
