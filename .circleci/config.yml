@@ -39,7 +39,7 @@ jobs:
               docker build -t  image_for_lettings_oc .
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 
-              docker tag $CIRCLE_SHA1 1youcef/oc-lettings:$CIRCLE_SHA1
+              docker tag $CIRCLE_SHA1 1youcef/oc-lettings:$CIRCLE_SHA1 .
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
 #
