@@ -43,7 +43,7 @@ jobs:
 
   heroku:
     docker:
-      - image: circleci/python:3.9
+    - image: circleci/python:3.9
       auth:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD  # context / project UI env-var reference
