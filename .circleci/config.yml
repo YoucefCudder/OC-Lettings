@@ -48,6 +48,8 @@ jobs:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD  # context / project UI env-var reference
 # Heroku CLI à integrer deans les étapes ????
+#heroku login peut etre
+
     steps:
         - checkout
         - run:
