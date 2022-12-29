@@ -62,5 +62,10 @@ workflows:
   test_and_build_image:
     jobs:
       - test
-      - build_image
-      - heroku
+      - build_image:
+          requires:
+            - test
+      - heroku:
+          requires:
+            - test
+            - build_image
