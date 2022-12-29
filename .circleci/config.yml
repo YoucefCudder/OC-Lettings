@@ -24,7 +24,7 @@ jobs:
             flake8 .
   build_image:
       docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.9
         auth:
             username: $DOCKER_USERNAME
             password: $DOCKER_PASSWORD
@@ -38,21 +38,26 @@ jobs:
             command: |
               docker build -t  image_for_lettings_oc .
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
-
               docker tag  image_for_lettings_oc 1youcef/oc-lettings:$CIRCLE_SHA1
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
-#
-#deploy_heroku:
-#  docker:
-#    - image: circleci/python:3.9
-
-
-  #deploy heroku
-
+  heroku:
+    docker:
+      - image: circleci/python:3.9
+      auth:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD  # context / project UI env-var reference
+# Heroku CLI à integrer deans les étapes ????
+    steps:
+        - checkout
+        - run:
+            name: Deploy Main to Heroku
+            command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/lettings-oc-p13.git main
 workflows:
   version: 2
   test_and_build_image:
     jobs:
       - test
       - build_image
+      - heroku
