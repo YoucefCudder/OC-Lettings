@@ -59,6 +59,8 @@ jobs:
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
               docker pull 1youcef/oc-lettings:$CIRCLE_SHA1
               heroku container:login
+              echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+
               docker tag  image_for_lettings_oc 1youcef/oc-lettings:$CIRCLE_SHA1
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
               heroku container: release --app=$HEROKU_APP_NAME web
