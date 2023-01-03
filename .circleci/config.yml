@@ -55,8 +55,13 @@ jobs:
         - run:
             name: Deploy Main to Heroku
             command: |
-              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/lettings-oc-p13.git master
 
+              echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+              docker pull 1youcef/oc-lettings:$CIRCLE_SHA1
+              heroku container:login
+              docker tag  image_for_lettings_oc 1youcef/oc-lettings:$CIRCLE_SHA1
+              docker push 1youcef/oc-lettings:$CIRCLE_SHA1
+              heroku container: release --app=$HEROKU_APP_NAME web
 workflows:
   version: 2
   test_and_build_image:
