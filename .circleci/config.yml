@@ -57,9 +57,9 @@ jobs:
 
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 
-              HEROKU_API_KEY=${HEROKU_KEY} heroku container:login
-              HEROKU_API_KEY=${HEROKU_KEY} heroku container:push -a oc-lettings web
-              HEROKU_API_KEY=${HEROKU_KEY} heroku container:release -a oc-lettings web
+              heroku container:login
+              heroku container:push -a oc-lettings web
+              heroku container:release -a oc-lettings web
 
 workflows:
   version: 2
