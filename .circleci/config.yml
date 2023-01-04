@@ -47,9 +47,6 @@ jobs:
       auth:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD  # context / project UI env-var reference
-# Heroku CLI à integrer deans les étapes ????
-#heroku login peut etre
-
     steps:
         - checkout
         - run:
@@ -58,6 +55,8 @@ jobs:
 
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
               docker pull 1youcef/oc-lettings:$CIRCLE_SHA1
+              sudo curl https://cli-assets.heroku.com/install.sh | sh
+
               heroku container:login
 #              echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 
