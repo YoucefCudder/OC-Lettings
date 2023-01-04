@@ -59,11 +59,11 @@ jobs:
 #              docker tag  image_for_lettings_oc 1youcef/oc-lettings:$CIRCLE_SHA1
 #              docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 #              heroku container:release --app=$HEROKU_APP_NAME web
-               sudo curl https://cli-assets.heroku.com/install.sh | sh
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
 
-               HEROKU_API_KEY=${HEROKU_KEY} heroku container:login
-               HEROKU_API_KEY=${HEROKU_KEY} heroku container:push -a oc-lettings web
-               HEROKU_API_KEY=${HEROKU_KEY} heroku container:release -a oc-lettings web
+            HEROKU_API_KEY=${HEROKU_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_KEY} heroku container:push -a oc-lettings web
+            HEROKU_API_KEY=${HEROKU_KEY} heroku container:release -a oc-lettings web
 
 workflows:
   version: 2
