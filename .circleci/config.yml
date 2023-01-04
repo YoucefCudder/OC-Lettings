@@ -58,8 +58,8 @@ jobs:
 
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
-              heroku container:push -a oc-lettings web
-              heroku container:release -a oc-lettings web
+              heroku container:push -a oc-lettings-p13 web
+              heroku container:release -a oc-lettings-p13 web
 
 workflows:
   version: 2
