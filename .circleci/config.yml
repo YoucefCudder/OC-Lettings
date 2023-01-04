@@ -52,10 +52,11 @@ jobs:
         - run:
             name: Deploy Main to Heroku
             command: |
-              sudo curl https://cli-assets.heroku.com/install.sh | sh
-              heroku auth:login
-
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+              sudo curl https://cli-assets.heroku.com/install.sh | sh
+#             heroku auth:login
+              docker tag  image_for_lettings_oc 1youcef/oc-lettings:$CIRCLE_SHA1
+
 
               heroku container:login
               heroku container:push -a oc-lettings web
