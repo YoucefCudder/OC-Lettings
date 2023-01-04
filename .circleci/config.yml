@@ -31,7 +31,6 @@ jobs:
       steps:
         - checkout
         - setup_remote_docker
-
         - run:
             name: Build docker image
 
@@ -49,13 +48,14 @@ jobs:
         password: $DOCKER_PASSWORD  # context / project UI env-var reference
     steps:
         - checkout
+        - setup_remote_docker
+
         - run:
             name: Deploy Main to Heroku
             command: |
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
               sudo curl https://cli-assets.heroku.com/install.sh | sh
               docker tag  image_for_lettings_oc 1youcef/oc-lettings:$CIRCLE_SHA1
-
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
               heroku container:push -a oc-lettings-p13 web
