@@ -52,10 +52,10 @@ jobs:
         - run:
             name: Deploy Main to Heroku
             command: |
-            sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_KEY} heroku container:login
-            HEROKU_API_KEY=${HEROKU_KEY} heroku container:push -a oc-lettings web
-            HEROKU_API_KEY=${HEROKU_KEY} heroku container:release -a oc-lettings web
+              sudo curl https://cli-assets.heroku.com/install.sh | sh
+              HEROKU_API_KEY=${HEROKU_KEY} heroku container:login
+              HEROKU_API_KEY=${HEROKU_KEY} heroku container:push -a oc-lettings web
+              HEROKU_API_KEY=${HEROKU_KEY} heroku container:release -a oc-lettings web
 
 workflows:
   version: 2
