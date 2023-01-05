@@ -59,10 +59,7 @@ jobs:
               echo $HEROKU_API_KEY | docker login --username  --password-stdin registry.heroku.com
               docker tag  $DOCKER_USERNAME/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
               docker push registry.heroku.com/$HEROKU_APP_NAME/web
-              heroku container:push -a lettings-oc-p13 web
-
               heroku container:release -a lettings-oc-p13 web
-
 
 
 workflows:
