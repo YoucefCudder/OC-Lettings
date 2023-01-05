@@ -53,8 +53,8 @@ jobs:
         - run:
             name: Deploy Main to Heroku
             command: |
-              echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
-              echo $HEROKU_API_KEY | docker login --username=_  --password-stdin registry.heroku.com
+              echo $HEROKU_API_KEY | docker login --username  --password-stdin registry.heroku.com
+              echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
               docker pull 1youcef/oc-lettings:$CIRCLE_SHA1
               sudo curl https://cli-assets.heroku.com/install.sh | sh
               docker tag  $DOCKER_USERNAME/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
