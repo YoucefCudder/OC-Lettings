@@ -57,12 +57,12 @@ jobs:
               sudo curl https://cli-assets.heroku.com/install.sh | sh
               echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
               heroku container:login
-              heroku container:push -a oc-lettings-p13 web
+              heroku container:push -a lettings-oc-p13 web
               docker pull 1youcef/oc-lettings:$CIRCLE_SHA1
 
               docker tag  image_for_lettings_oc 1youcef/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
               docker push registry.heroku.com/$HEROKU_APP_NAME/web
-              heroku container:release -a oc-lettings-p13 web
+              heroku container:release -a lettings-oc-p13 web
 
 
 
