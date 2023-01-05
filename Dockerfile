@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 # copy the rest of the app's source code to the working directory
 COPY . /app
 # run the app
-CMD ["python", "manage.py", "runserver"]
+CMD python manage.py runserver 0.0.0.0:$PORT
