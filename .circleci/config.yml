@@ -58,10 +58,10 @@ jobs:
               docker pull 1youcef/oc-lettings:$CIRCLE_SHA1
               echo 2
 
-              heroku container:login
               sudo curl https://cli-assets.heroku.com/install.sh | sh
               echo 3
 
+              heroku container:login
               echo $HEROKU_AUTH_TOKEN | docker login --username=_  --password-stdin registry.heroku.com
               echo 4
 
