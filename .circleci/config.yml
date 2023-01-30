@@ -58,6 +58,7 @@ jobs:
               docker pull 1youcef/oc-lettings:$CIRCLE_SHA1
               echo 2
 
+              heroku container:login
               sudo curl https://cli-assets.heroku.com/install.sh | sh
               echo 3
 
