@@ -59,7 +59,7 @@ jobs:
               echo 2
 
               sudo curl https://cli-assets.heroku.com/install.sh | sh
-              heroku login
+              heroku login -i
               heroku container:login
               echo 3
 
