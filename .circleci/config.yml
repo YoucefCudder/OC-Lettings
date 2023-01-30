@@ -59,11 +59,10 @@ jobs:
               echo 2
 
               sudo curl https://cli-assets.heroku.com/install.sh | sh
-              heroku login -i
-              heroku container:login
+
               echo 3
 
-              echo $HEROKU_AUTH_TOKEN | docker login --username=_  --password-stdin registry.heroku.com
+              echo $HEROKU_API_KEY | docker login --username=_  --password-stdin registry.heroku.com
               echo 4
 
               docker tag  $DOCKER_USERNAME/oc-lettings:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
