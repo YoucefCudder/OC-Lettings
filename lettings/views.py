@@ -24,8 +24,7 @@ def lettings_index(request):
 # Ut quis urna pellentesque justo mattis ullamcorper ac non tellus.
 # In tristique mauris eu velit fermentum, tempus pharetra est luctus.
 # Vivamus consequat aliquam libero, eget bibendum lorem. Sed non dolor risus.
-# Mauris condimentum auctor elementum. Donec quis nisi ligula. Integer vehicula tincidunt enim,
-# ac lacinia augue pulvinar sit amet.
+# Mauris condimentum auctor elementum. Donec quis nisi ligula. Integer vehicula tincidunt enim, ac lacinia augue pulvinar sit amet.
 def letting(request, letting_id):
     letting = Letting.objects.get(id=letting_id)
     context = {
