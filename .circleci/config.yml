@@ -40,7 +40,7 @@ jobs:
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
   heroku:
-    stage:
+    executor:
       executor: heroku/default
 
 
