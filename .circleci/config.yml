@@ -40,11 +40,15 @@ jobs:
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
   heroku:
+
     docker:
     - image: circleci/python:3.9
+
+      executor: heroku/default
       auth:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
+
     steps:
         - checkout
         - setup_remote_docker
