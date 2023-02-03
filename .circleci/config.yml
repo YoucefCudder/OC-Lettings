@@ -40,7 +40,7 @@ jobs:
               docker push 1youcef/oc-lettings:$CIRCLE_SHA1
 
   heroku:
-    executor: heroku/default
+  executor: heroku/default
     docker:
     - image: circleci/python:3.9
 
