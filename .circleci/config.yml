@@ -79,6 +79,7 @@ workflows:
               only:
               - master
       - heroku:
+          deploy_heroku:
           requires:
             - test
             - build_image
