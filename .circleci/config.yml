@@ -69,6 +69,10 @@ workflows:
       - build_image:
           requires:
             - test
+          filters:
+            branches:
+              only:
+              - master
       - heroku:
           requires:
             - test
